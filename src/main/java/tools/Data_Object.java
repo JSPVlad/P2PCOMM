@@ -1,25 +1,27 @@
 package tools;
-
 import java.io.Serializable;
 public class Data_Object implements Serializable{
     private String type;
     private String sender;
-    private Boolean continuous;
+    private String continuous;
     private String continuous_filename;
+    private String continuous_filesize;
     private String continuous_id;
     private String data;
-    public Data_Object(String sender,
-                       String type,
-                       Boolean continuous,
-                       String continuous_id,
-                       String continuous_filename,
-                       String data){
+    public Data_Object( String type,
+                        String sender,
+                        String continuous,
+                        String continuous_id,
+                        String continuous_filename,
+                        String continuous_filesize,
+                        String data ){
 
-        this.sender = sender;
         this.type = type;
+        this.sender = sender;
         this.continuous = continuous;
         this.continuous_id = continuous_id;
         this.continuous_filename  = continuous_filename;
+        this.continuous_filesize = continuous_filesize;
         this.data = data;
     }
 
@@ -39,11 +41,11 @@ public class Data_Object implements Serializable{
         this.sender = sender;
     }
 
-    public Boolean getContinuous() {
+    public String getContinuous() {
         return continuous;
     }
 
-    public void setContinuous(Boolean continuous) {
+    public void setContinuous(String continuous) {
         this.continuous = continuous;
     }
 
@@ -69,6 +71,14 @@ public class Data_Object implements Serializable{
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public String getContinuous_filesize() {
+        return continuous_filesize;
+    }
+
+    public void setContinuous_filesize(String continuous_filesize) {
+        this.continuous_filesize = continuous_filesize;
     }
 
 }
