@@ -13,7 +13,7 @@ public class Main_Server{
             while(true){
                 DatagramPacket datagramPacket = new DatagramPacket(receive_data,receive_data.length);
                 datagramSocket.receive(datagramPacket);
-                Packet_Handler packet_handler = new Packet_Handler(datagramPacket);
+                Packet_Handler packet_handler = new Packet_Handler(datagramPacket,datagramSocket);
             }
         } catch (Exception e) {
             e.printStackTrace();

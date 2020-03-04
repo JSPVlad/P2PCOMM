@@ -12,9 +12,11 @@ import java.util.TimerTask;
 
 public class PushIp extends Thread{
 	DatagramSocket datagramSocket;
+	DatagramPacket ack;
 	String Server_Address;
 	Integer Server_Port;
 	Boolean stop = false;
+
 
 	PushIp(DatagramSocket datagramSocket, String Server_Address, Integer Server_Port) {
 		this.datagramSocket = datagramSocket;
@@ -23,7 +25,7 @@ public class PushIp extends Thread{
 	}
 
 	public void run() {
-		Data_Object data_Object = new Data_Object("My_UserName", "update", false, null, null, "My_Password");
+		Data_Object data_Object = new Data_Object("My_UserName", "update", "false", null, null, "My_Password",null);
 		while (true && stop != true) {
 			try {
 				byte[] sending_data;
@@ -32,6 +34,7 @@ public class PushIp extends Thread{
 				objectOutputStream.writeObject(data_Object);
 				sending_data = bytestream.toByteArray();
 				datagramSocket.send(new DatagramPacket(sending_data, sending_data.length, InetAddress.getByName(Server_Address), Server_Port));
+
 				Thread.sleep(5000);
 			} catch (IOException e) {
 				e.printStackTrace();

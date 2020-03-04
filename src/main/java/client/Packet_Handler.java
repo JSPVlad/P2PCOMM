@@ -22,10 +22,16 @@ public class Packet_Handler {
 	        case "file":
 	        	System.out.println("File");
 	        	break;
+	        case "ACK":
+	        	System.out.println("ACK received from "+datagramPacket.getAddress());
+	        	break;
 	        default:
 	        	System.out.println("Invalid Data Recieved from "+datagramPacket.getAddress());
 	        	break;
         }
+
+	}
+	public static void OnPacketReceived(){
 
 	}
 }
